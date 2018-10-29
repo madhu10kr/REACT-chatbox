@@ -35,7 +35,24 @@ class Chat extends React.Component{
     }
     render(){
         return (
-            <div className="container">
+            <div>
+            {this.state.messages.map(message => {
+                return (
+                <div>{message.author}: {message.message}</div>
+                )
+                })}
+            <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})}/>
+            <br/>
+            <input type="text" placeholder="Message" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})}/>
+            <br/>
+            <button onClick={this.sendMessage}>Send</button>
+        </div>
+        );
+    }
+}
+export default Chat;
+
+/*<div className="container">
                 <div className="row">
                     <div className="col-4">
                         <div className="card">
@@ -61,8 +78,4 @@ class Chat extends React.Component{
                         </div>
                     </div>
                 </div>
-            </div>
-        );
-    }
-}
-export default Chat;
+            </div>*/
